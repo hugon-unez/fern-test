@@ -8,32 +8,7 @@ body, html {
   align-items: center !important;
   gap: 12px !important;
 }
-.fern-button-group.fern-header-navbar-links .fern-button{
-  border-radius: 4px !important;
-  padding: 6px 14px !important;
-}
-.fern-button-group.fern-header-navbar-links .fern-button .fern-button-text{
-  font-size: 12px !important;
-}
-.fern-button-group.fern-header-navbar-links button{
-  border-radius: 4px !important;
-  padding: 6px 14px !important;
-}
-/* Plants = ghost (light border) */
-.fern-button-group.fern-header-navbar-links > *:nth-child(2) .fern-button,
-.fern-button-group.fern-header-navbar-links > *:nth-child(2) button {
-  border: 1px solid #d1d5db !important;
-  background: #fff !important;
-  color: #000 !important;
-}
-/* About Us = CTA (solid black), slimmer to match search bar height */
-.fern-button-group.fern-header-navbar-links > *:nth-child(3) .fern-button,
-.fern-button-group.fern-header-navbar-links > *:nth-child(3) button {
-  background-color: #000000 !important;
-  color: #ffffff !important;
-  border: none !important;
-  padding: 4px 12px !important;
-}
+/* Old nth-child rules removed - now using class-based selectors below */
 #fern-header{
     border-color: var(--border, var(--grayscale-a1)) !important;
 }
@@ -90,32 +65,32 @@ div[role="tablist"] a::after{
 
 .fern-header-tabs div[role="tablist"] a{
     font-size: 12px !important;
-    border-radius: 6px !important;
+    border-radius: 0 !important;
     margin-right: 0.5rem !important;
     height: 32px;
     padding: 6px 12px !important;
     transition: all 0.3s ease;
 }
 .fern-header-tabs div[role="tablist"] a:hover{
-    background-color: #eeeeee !important;
-    color: var(--accent-10) !important;
+    background-color: oklch(0.908 0 none) !important;
+    color: rgb(0, 0, 0) !important;
 }
 [data-theme=default]#fern-header [data-radix-collection-item][data-state=active]{
-    background-color: #eeeeee !important;
-    color: var(--accent-10) !important;
+    background-color: oklch(0.908 0 none) !important;
+    color: rgb(0, 0, 0) !important;
     padding: 6px 12px !important;
-    border-radius: 6px !important;
+    border-radius: 0 !important;
     font-weight: 500 !important;
 }
 
 .fern-header-tabs > div > a {
-    border-radius: 6px;
+    border-radius: 0;
     padding: 6px 12px !important;
 }
 
 [data-theme=default]#fern-header [data-radix-collection-item][data-state=active],
 .fern-header-tabs a:hover {
-  color: var(--accent) !important;
+  color: rgb(0, 0, 0) !important;
 }
 
 div[data-mode="ask-ai"] {
@@ -408,53 +383,78 @@ nav[aria-label="Up next"] a {
     text-decoration: none !important;
 }
 
-/* ========== Header Visual Overrides (div#fern-docs-root = absolute authority) ========== */
+/* ========== Header Visual Overrides (beat Tailwind utility classes) ========== */
 
-/* 1. Search bar: rectangle, slim height — force override of internal component styles */
-div#fern-docs-root #fern-search-button,
-div#fern-docs-root [data-testid="fern-search-button"] {
-  height: 32px !important;
+/* 1. Search bar: override Tailwind .rounded-2, .h-9, .bg-transparent, .ring-1 by targeting ID + class */
+button#fern-search-button.rounded-2,
+div#fern-docs-root #fern-search-button {
   border-radius: 4px !important;
+}
+button#fern-search-button.h-9,
+div#fern-docs-root #fern-search-button {
+  height: 32px !important;
+}
+button#fern-search-button.bg-transparent,
+div#fern-docs-root #fern-search-button {
   background-color: #f7f7f7 !important;
+}
+button#fern-search-button.ring-1,
+div#fern-docs-root #fern-search-button {
+  box-shadow: none !important;
   border: 1px solid #d1d5db !important;
+  outline: none !important;
 }
 div#fern-docs-root #fern-search-button input,
 div#fern-docs-root #fern-search-button span,
-div#fern-docs-root [data-testid="fern-search-button"] input,
-div#fern-docs-root [data-testid="fern-search-button"] span {
+div#fern-docs-root #fern-search-button .fern-header-search-bar {
   font-size: 13px !important;
   font-weight: 400 !important;
 }
+div#fern-docs-root #fern-search-button:focus,
+div#fern-docs-root #fern-search-button:focus-visible {
+  box-shadow: none !important;
+  outline: none !important;
+}
 
-/* 2. Navbar: spacing */
+/* 2. Navbar: spacing and base button styles */
 div#fern-docs-root .fern-header-navbar-links,
 div#fern-docs-root .fern-button-group.fern-header-navbar-links {
   gap: 12px !important;
 }
 
-/* Plants = ghost button */
-div#fern-docs-root .fern-header-navbar-links a[href*="api-reference"],
-div#fern-docs-root .fern-header-navbar-links a[href*="api-reference"] .fern-button,
-div#fern-docs-root .fern-header-navbar-links a[href*="api-reference"] button {
-  border: 1px solid #d1d5db !important;
-  background: transparent !important;
-  border-radius: 4px !important;
+/* All navbar buttons get rectangular corners */
+.fern-header-navbar-links .fern-button {
+  border-radius: 0 !important;
+  padding: 6px 14px !important;
+  font-size: 12px !important;
 }
 
-/* About Us = black CTA — target primary button class specifically */
-div#fern-docs-root .fern-button.fern-button-primary,
-div#fern-docs-root .fern-header-navbar-links a[href*="instructions"],
-div#fern-docs-root .fern-header-navbar-links a[href*="instructions"] .fern-button,
-div#fern-docs-root .fern-header-navbar-links a[href*="instructions"] button {
+/* Learn More = minimal (default styling, no special overrides needed) */
+.fern-header-navbar-links .fern-button.minimal {
+  /* Uses Fern's default minimal styling */
+}
+
+/* Plants = outlined/ghost button (border, transparent bg) */
+.fern-header-navbar-links .fern-button.outlined:not(.primary),
+.fern-header-navbar-links a.fern-button.outlined:not(.primary) {
+  border: 1px solid #d1d5db !important;
+  background: transparent !important;
+  color: #000 !important;
+}
+
+/* About Us = primary CTA (solid black, white text) */
+.fern-header-navbar-links .fern-button.primary,
+.fern-header-navbar-links a.fern-button.primary {
   background-color: #000000 !important;
   color: #ffffff !important;
-  border-radius: 4px !important;
+  border: none !important;
 }
 
 /* 3. Sub-header: active tab highlight */
 div#fern-docs-root #fern-header [role="tab"][data-state="active"],
 div#fern-docs-root #fern-header a[role="tab"][data-state="active"] {
-  background-color: #eeeeee !important;
-  border-radius: 6px !important;
+  background-color: oklch(0.908 0 none) !important;
+  color: rgb(0, 0, 0) !important;
+  border-radius: 0 !important;
   padding: 4px 12px !important;
 }
