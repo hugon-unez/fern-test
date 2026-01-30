@@ -9,3 +9,34 @@ paths:
               id: 42
               username: green_thumb99
               email: green.thumb99@plantmail.com
+  /plant:
+    post:
+      x-fern-examples:
+        - request:
+            body:
+              name: "Fern"
+              category: "Indoor"
+              tags: ["green", "leafy"]
+              status: "available"
+          response:
+            body:
+              id: 101
+              name: "Fern"
+              status: "available"
+              tags: ["green", "leafy"]
+          code-samples:
+            - sdk: python
+              code: |
+                import requests
+
+                response = requests.post(
+                    "https://api.plantstore.dev/v3/plant",
+                    json={
+                        "name": "Fern",
+                        "category": "Indoor",
+                        "tags": ["green", "leafy"],
+                        "status": "available"
+                    },
+                    headers={"Content-Type": "application/json"}
+                )
+                plant = response.json()
