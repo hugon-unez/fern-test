@@ -1,0 +1,47 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Fern
+.fern/
+fern-output/
+*.fern.lock
+
+# Dependencies
+node_modules/
+
+# Build / generated output
+dist/
+build/
+.out/
+.next/
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.pem
+
+# Logs and temp
+*.log
+npm-debug.log*
+.npm
+.cache
+tmp/
+temp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# IDE / editor
+.idea/
+.vscode/
+*.sublime-*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
