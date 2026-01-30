@@ -35,15 +35,16 @@ div[role="tablist"] a::after{
 }
 
 #fern-search-button {
-  border-radius: 4px !important;
-  padding: 0 12px !important;
-  height: 32px !important;
+  border-radius: 0 !important;
+  padding: 0 16px !important;
+  height: 40px !important;
   box-shadow: none !important;
-  background-color: #f7f7f7 !important;
-  color: var(--accent) !important;
-  border: 1px solid #d1d5db !important;
-  font-size: 13px !important;
-  font-weight: 400 !important;
+  background-color: rgba(0, 0, 0, 0.06) !important;
+  color: rgb(0, 0, 0) !important;
+  border: none !important;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.12) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
 }
 #fern-search-button:focus,
 #fern-search-button:focus-within {
@@ -52,8 +53,8 @@ div[role="tablist"] a::after{
 }
 #fern-search-button input {
   background: transparent !important;
-  font-size: 13px !important;
-  font-weight: 400 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
 }
 #fern-search-button input:focus {
   outline: none !important;
@@ -385,30 +386,31 @@ nav[aria-label="Up next"] a {
 
 /* ========== Header Visual Overrides (beat Tailwind utility classes) ========== */
 
-/* 1. Search bar: override Tailwind .rounded-2, .h-9, .bg-transparent, .ring-1 by targeting ID + class */
+/* 1. Search bar: override Tailwind classes to match reference design */
 button#fern-search-button.rounded-2,
 div#fern-docs-root #fern-search-button {
-  border-radius: 4px !important;
+  border-radius: 0 !important;
 }
 button#fern-search-button.h-9,
 div#fern-docs-root #fern-search-button {
-  height: 32px !important;
+  height: 40px !important;
 }
 button#fern-search-button.bg-transparent,
 div#fern-docs-root #fern-search-button {
-  background-color: #f7f7f7 !important;
+  background-color: rgba(0, 0, 0, 0.06) !important;
 }
 button#fern-search-button.ring-1,
 div#fern-docs-root #fern-search-button {
   box-shadow: none !important;
-  border: 1px solid #d1d5db !important;
+  border: none !important;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.12) !important;
   outline: none !important;
 }
 div#fern-docs-root #fern-search-button input,
 div#fern-docs-root #fern-search-button span,
 div#fern-docs-root #fern-search-button .fern-header-search-bar {
-  font-size: 13px !important;
-  font-weight: 400 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
 }
 div#fern-docs-root #fern-search-button:focus,
 div#fern-docs-root #fern-search-button:focus-visible {
@@ -420,6 +422,11 @@ div#fern-docs-root #fern-search-button:focus-visible {
 div#fern-docs-root .fern-header-navbar-links,
 div#fern-docs-root .fern-button-group.fern-header-navbar-links {
   gap: 12px !important;
+}
+
+/* Reduce spacing between search bar and navbar */
+.fern-header-navbar-links {
+  margin-left: -8px !important;
 }
 
 /* All navbar buttons get rectangular corners */
@@ -434,12 +441,13 @@ div#fern-docs-root .fern-button-group.fern-header-navbar-links {
   /* Uses Fern's default minimal styling */
 }
 
-/* Plants = outlined/ghost button (border, transparent bg) */
+/* Plants = outlined/ghost button (inset box-shadow, transparent bg) */
 .fern-header-navbar-links .fern-button.outlined:not(.primary),
 .fern-header-navbar-links a.fern-button.outlined:not(.primary) {
-  border: 1px solid #d1d5db !important;
+  border: none !important;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 0px 1px inset !important;
   background: transparent !important;
-  color: #000 !important;
+  color: rgb(42, 42, 42) !important;
 }
 
 /* About Us = primary CTA (solid black, white text) */
