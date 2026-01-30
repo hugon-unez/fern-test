@@ -16,6 +16,17 @@ settings:
   http-snippets: true
   search-text: "Search the docs"
 
+navbar-links:
+  - type: minimal
+    text: Learn More
+    href: /
+  - type: outlined
+    text: Plants
+    href: /api-reference
+  - type: primary
+    text: About Us
+    href: /instructions
+
 tabs:
   home:
     display-name: Home
@@ -51,8 +62,8 @@ page-actions:
     claude: true
     cursor: true
   
-css: 
-  - docs/assets/main.css
+css:
+  - ./docs/assets/main.css
 
 typography:
   bodyFont:
