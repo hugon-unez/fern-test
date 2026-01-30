@@ -307,6 +307,8 @@ webhooks:
       operationId: plantCreated
       summary: Webhook for when a plant is created
       description: This webhook is triggered when a new plant is added to the store
+      tags:
+        - webhook
       requestBody:
         required: true
         content:
@@ -322,6 +324,14 @@ webhooks:
                   format: date-time
                 data:
                   $ref: "#/components/schemas/PlantResponse"
+            example:
+              event: plant.created
+              timestamp: "2024-01-15T10:30:00.000Z"
+              data:
+                id: 101
+                name: "Fern"
+                status: "available"
+                tags: ["green", "leafy"]
       responses:
         "200":
           description: Webhook processed successfully
