@@ -14,6 +14,7 @@ layout:
 settings:
   dark-mode-code: true
   http-snippets: true
+  search-text: "Search the docs"
 
 tabs:
   home:
