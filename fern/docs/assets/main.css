@@ -3,14 +3,36 @@ body, html {
     overflow-x: hidden;
 }
 
+.fern-button-group.fern-header-navbar-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
 .fern-button-group.fern-header-navbar-links .fern-button{
-    border-radius: 0rem !important;
+  border-radius: 4px !important;
+  padding: 6px 14px !important;
 }
 .fern-button-group.fern-header-navbar-links .fern-button .fern-button-text{
-    font-size: 12px !important;
+  font-size: 12px !important;
 }
 .fern-button-group.fern-header-navbar-links button{
-    border-radius: 0rem !important;
+  border-radius: 4px !important;
+  padding: 6px 14px !important;
+}
+/* Plants = ghost (light border) */
+.fern-button-group.fern-header-navbar-links > *:nth-child(2) .fern-button,
+.fern-button-group.fern-header-navbar-links > *:nth-child(2) button {
+  border: 1px solid #d1d5db !important;
+  background: #fff !important;
+  color: #000 !important;
+}
+/* About Us = CTA (solid black), slimmer to match search bar height */
+.fern-button-group.fern-header-navbar-links > *:nth-child(3) .fern-button,
+.fern-button-group.fern-header-navbar-links > *:nth-child(3) button {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 4px 12px !important;
 }
 #fern-header{
     border-color: var(--border, var(--grayscale-a1)) !important;
@@ -38,16 +60,29 @@ div[role="tablist"] a::after{
 }
 
 #fern-search-button {
-  border-radius: 0 !important;
-  padding: 0 16px !important;
-  height: 40px !important;
+  border-radius: 4px !important;
+  padding: 0 12px !important;
+  height: 32px !important;
   box-shadow: none !important;
-  background: #f5f5f5 !important;
+  background-color: #f7f7f7 !important;
   color: var(--accent) !important;
   border: 1px solid #d1d5db !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+}
+#fern-search-button:focus,
+#fern-search-button:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
 }
 #fern-search-button input {
   background: transparent !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+}
+#fern-search-button input:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 #fern-search-button input::placeholder {
   color: #6b7280;
@@ -55,22 +90,27 @@ div[role="tablist"] a::after{
 
 .fern-header-tabs div[role="tablist"] a{
     font-size: 12px !important;
-    border-radius: 0 !important;
+    border-radius: 6px !important;
     margin-right: 0.5rem !important;
     height: 32px;
+    padding: 6px 12px !important;
     transition: all 0.3s ease;
 }
 .fern-header-tabs div[role="tablist"] a:hover{
-    background-color: var(--accent-5) !important;
+    background-color: #eeeeee !important;
     color: var(--accent-10) !important;
 }
 [data-theme=default]#fern-header [data-radix-collection-item][data-state=active]{
-    background-color: var(--accent-5) !important;
+    background-color: #eeeeee !important;
     color: var(--accent-10) !important;
+    padding: 6px 12px !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
 }
 
 .fern-header-tabs > div > a {
-    border-radius: 0;
+    border-radius: 6px;
+    padding: 6px 12px !important;
 }
 
 [data-theme=default]#fern-header [data-radix-collection-item][data-state=active],
@@ -366,4 +406,55 @@ nav[aria-label="Up next"] a {
 #fern-announcement .fern-mdx-link {
     color: var(--accent-contrast) !important;
     text-decoration: none !important;
+}
+
+/* ========== Header Visual Overrides (div#fern-docs-root = absolute authority) ========== */
+
+/* 1. Search bar: rectangle, slim height — force override of internal component styles */
+div#fern-docs-root #fern-search-button,
+div#fern-docs-root [data-testid="fern-search-button"] {
+  height: 32px !important;
+  border-radius: 4px !important;
+  background-color: #f7f7f7 !important;
+  border: 1px solid #d1d5db !important;
+}
+div#fern-docs-root #fern-search-button input,
+div#fern-docs-root #fern-search-button span,
+div#fern-docs-root [data-testid="fern-search-button"] input,
+div#fern-docs-root [data-testid="fern-search-button"] span {
+  font-size: 13px !important;
+  font-weight: 400 !important;
+}
+
+/* 2. Navbar: spacing */
+div#fern-docs-root .fern-header-navbar-links,
+div#fern-docs-root .fern-button-group.fern-header-navbar-links {
+  gap: 12px !important;
+}
+
+/* Plants = ghost button */
+div#fern-docs-root .fern-header-navbar-links a[href*="api-reference"],
+div#fern-docs-root .fern-header-navbar-links a[href*="api-reference"] .fern-button,
+div#fern-docs-root .fern-header-navbar-links a[href*="api-reference"] button {
+  border: 1px solid #d1d5db !important;
+  background: transparent !important;
+  border-radius: 4px !important;
+}
+
+/* About Us = black CTA — target primary button class specifically */
+div#fern-docs-root .fern-button.fern-button-primary,
+div#fern-docs-root .fern-header-navbar-links a[href*="instructions"],
+div#fern-docs-root .fern-header-navbar-links a[href*="instructions"] .fern-button,
+div#fern-docs-root .fern-header-navbar-links a[href*="instructions"] button {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+}
+
+/* 3. Sub-header: active tab highlight */
+div#fern-docs-root #fern-header [role="tab"][data-state="active"],
+div#fern-docs-root #fern-header a[role="tab"][data-state="active"] {
+  background-color: #eeeeee !important;
+  border-radius: 6px !important;
+  padding: 4px 12px !important;
 }
