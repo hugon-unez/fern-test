@@ -54,6 +54,7 @@ colors:
     dark: "#FFFFFF"
     light: "#000000"
   background:
+    dark: "#0A0A0A"
     light: "#FFFFFF"
 
 page-actions:

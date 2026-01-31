@@ -1,125 +1,136 @@
-/* Prevent horizontal scrolling */
+/* ============================================================
+   1. GLOBAL LAYOUT & SPACING (Applies to Both Themes)
+   ============================================================ */
+
 body, html {
     overflow-x: hidden;
 }
 
+/* Header & Search Bar Dimensions - Structural Foundation */
+#fern-search-button {
+  flex: 0 0 521px !important;
+  height: 40px !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+/* Navbar Spacing */
 .fern-button-group.fern-header-navbar-links {
   display: flex !important;
   align-items: center !important;
-  gap: 0 !important;
-}
-/* Old nth-child rules removed - now using class-based selectors below */
-#fern-header{
-    border-color: var(--border, var(--grayscale-a1)) !important;
-}
-.fern-header-tabs{
-    padding-bottom: 0.25rem !important;
-}
-div[role="tablist"] a::after{
-    display: none !important;
+  gap: 12px !important;
+  margin-left: -40px !important; /* To fix the right-side shift */
 }
 
-/* [data-theme="default"]#fern-header{
-    filter: invert(1) !important;
-} */
-
-.fern-mdx-link{
-    color: var(--accent) !important;
-}
-.fern-mdx-link:hover,
-.fern-mdx-link:hover::after {
-  opacity: .65;
-}
-.fern-mdx-link .external-link-icon {
-    display: none !important;
-}
-
-#fern-search-button {
+.fern-header-navbar-links .fern-button {
   border-radius: 0 !important;
-  padding: 0 16px !important;
-  height: 40px !important;
-  box-shadow: none !important;
-  background-color: rgba(0, 0, 0, 0.06) !important;
-  color: rgb(0, 0, 0) !important;
-  border: none !important;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.12) !important;
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  flex-shrink: 1 !important;
-  flex-basis: 521px !important;
-}
-#fern-search-button:focus,
-#fern-search-button:focus-within {
-  outline: none !important;
-  box-shadow: none !important;
-}
-#fern-search-button input {
-  background: transparent !important;
-  font-size: 14px !important;
-  font-weight: 500 !important;
-}
-#fern-search-button input:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
-#fern-search-button input::placeholder {
-  color: #6b7280;
+  padding: 6px 12px !important;
+  font-size: 12px !important;
 }
 
-.fern-header-tabs div[role="tablist"] a{
+/* Tab Layout */
+.fern-header-tabs div[role="tablist"] a {
     font-size: 12px !important;
     border-radius: 0 !important;
     margin-right: 0.5rem !important;
     height: 32px;
     padding: 6px 12px !important;
-    transition: all 0.3s ease;
 }
-.fern-header-tabs div[role="tablist"] a:hover{
-    background-color: oklch(0.908 0 none) !important;
+
+/* ============================================================
+   2. LIGHT MODE ONLY (data-theme="default")
+   ============================================================ */
+
+:where(html, body, #fern-docs-root)[data-theme="default"] {
+  /* Search Bar */
+  #fern-search-button {
+    background-color: rgba(0, 0, 0, 0.06) !important;
     color: rgb(0, 0, 0) !important;
-}
-[data-theme=default]#fern-header [data-radix-collection-item][data-state=active]{
-    background-color: oklch(0.908 0 none) !important;
-    color: rgb(0, 0, 0) !important;
-    padding: 6px 12px !important;
-    border-radius: 0 !important;
-    font-weight: 500 !important;
-}
-
-.fern-header-tabs > div > a {
-    border-radius: 0;
-    padding: 6px 12px !important;
-}
-
-[data-theme=default]#fern-header [data-radix-collection-item][data-state=active],
-.fern-header-tabs a:hover {
-  color: rgb(0, 0, 0) !important;
-}
-
-div[data-mode="ask-ai"] {
-    border-radius: 0 !important;
-    border: none !important;
-    
-}
-
-#fern-ask-ai-button {
-    font-weight: 500 !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    color: var(--accent) !important;
-    background: var(--grayscale-a3) !important;
-    padding: 0 16px !important;
-    height: 40px !important;
-    border-bottom: 2px solid var(--accent-a5) !important;
-}
-
-nav[aria-label="Up next"] {
-    border-radius: 0 !important;
-}
+    border-bottom: 2px solid rgba(0, 0, 0, 0.12) !important;
+  }
   
-nav[aria-label="Up next"] a {
-    border-color: var(--grayscale-a4) !important;
-    border-radius: 0 !important;
+  #fern-search-button input, 
+  #fern-search-button span {
+    color: rgb(0, 0, 0) !important;
+  }
+
+  /* 'Plants' Ghost Button */
+  .fern-header-navbar-links .fern-button.outlined:not(.primary) {
+    color: rgb(42, 42, 42) !important;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 0px 1px inset !important;
+    background: transparent !important;
+  }
+
+  /* 'About Us' Primary Button (Solid Black) */
+  .fern-header-navbar-links .fern-button.primary {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+
+  /* Active Tab */
+  #fern-header [data-radix-collection-item][data-state="active"] {
+    background-color: oklch(0.908 0 none) !important;
+    color: rgb(0, 0, 0) !important;
+  }
+}
+
+/* ============================================================
+   3. DARK MODE ONLY (data-theme="dark")
+   ============================================================ */
+
+:where(html, body, #fern-docs-root)[data-theme="dark"] {
+  /* Search Bar - Subtle highlight & White text */
+  #fern-search-button {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+  }
+
+  #fern-search-button input, 
+  #fern-search-button span {
+    color: #ffffff !important;
+  }
+
+  #fern-search-button input::placeholder {
+    color: rgba(255, 255, 255, 0.55) !important;
+  }
+
+  /* Navbar Link Color */
+  .fern-header-navbar-links .fern-button.minimal {
+    color: #ffffff !important;
+  }
+
+  /* 'Plants' Ghost Button - White outline */
+  .fern-header-navbar-links .fern-button.outlined:not(.primary) {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3) !important;
+    background: transparent !important;
+    color: #ffffff !important;
+  }
+
+  /* 'About Us' Primary Button - INVERTED to Solid White */
+  .fern-header-navbar-links .fern-button.primary {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+  }
+
+  /* Active Tab - Transparent with light highlight */
+  #fern-header [role="tab"][data-state="active"] {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+  }
+
+  #fern-header [role="tab"] {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+
+  /* Desktop Icon Visibility */
+  .fern-header-navbar-links svg {
+    stroke: #ffffff !important;
+  }
 }
 
 /* Hero Section Styles */
@@ -387,84 +398,4 @@ nav[aria-label="Up next"] a {
 #fern-announcement .fern-mdx-link {
     color: var(--accent-contrast) !important;
     text-decoration: none !important;
-}
-
-/* ========== Header Visual Overrides (beat Tailwind utility classes) ========== */
-
-/* 1. Search bar: override Tailwind classes to match reference design */
-button#fern-search-button.rounded-2,
-div#fern-docs-root #fern-search-button {
-  border-radius: 0 !important;
-}
-button#fern-search-button.h-9,
-div#fern-docs-root #fern-search-button {
-  height: 40px !important;
-}
-button#fern-search-button.bg-transparent,
-div#fern-docs-root #fern-search-button {
-  background-color: rgba(0, 0, 0, 0.06) !important;
-}
-button#fern-search-button.ring-1,
-div#fern-docs-root #fern-search-button {
-  box-shadow: none !important;
-  border: none !important;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.12) !important;
-  outline: none !important;
-}
-div#fern-docs-root #fern-search-button input,
-div#fern-docs-root #fern-search-button span,
-div#fern-docs-root #fern-search-button .fern-header-search-bar {
-  font-size: 14px !important;
-  font-weight: 500 !important;
-}
-div#fern-docs-root #fern-search-button:focus,
-div#fern-docs-root #fern-search-button:focus-visible {
-  box-shadow: none !important;
-  outline: none !important;
-}
-
-/* 2. Navbar: spacing and base button styles */
-/* Note: reference site has no explicit gap set, so we don't override it */
-
-/* Reduce spacing between search bar and navbar - balance between spacing and search bar width */
-.fern-header-navbar-links {
-  margin-left: -40px !important;
-}
-
-/* All navbar buttons get rectangular corners */
-.fern-header-navbar-links .fern-button {
-  border-radius: 0 !important;
-  padding: 6px 12px !important;
-  font-size: 12px !important;
-}
-
-/* Learn More = minimal (default styling, no special overrides needed) */
-.fern-header-navbar-links .fern-button.minimal {
-  /* Uses Fern's default minimal styling */
-}
-
-/* Plants = outlined/ghost button (inset box-shadow, transparent bg) */
-.fern-header-navbar-links .fern-button.outlined:not(.primary),
-.fern-header-navbar-links a.fern-button.outlined:not(.primary) {
-  border: none !important;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 0px 1px inset !important;
-  background: transparent !important;
-  color: rgb(42, 42, 42) !important;
-}
-
-/* About Us = primary CTA (solid black, white text) */
-.fern-header-navbar-links .fern-button.primary,
-.fern-header-navbar-links a.fern-button.primary {
-  background-color: #000000 !important;
-  color: #ffffff !important;
-  border: none !important;
-}
-
-/* 3. Sub-header: active tab highlight */
-div#fern-docs-root #fern-header [role="tab"][data-state="active"],
-div#fern-docs-root #fern-header a[role="tab"][data-state="active"] {
-  background-color: oklch(0.908 0 none) !important;
-  color: rgb(0, 0, 0) !important;
-  border-radius: 0 !important;
-  padding: 4px 12px !important;
 }
