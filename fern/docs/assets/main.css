@@ -6,7 +6,7 @@ body, html {
 .fern-button-group.fern-header-navbar-links {
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
+  gap: 0 !important;
 }
 /* Old nth-child rules removed - now using class-based selectors below */
 #fern-header{
@@ -45,6 +45,8 @@ div[role="tablist"] a::after{
   border-bottom: 2px solid rgba(0, 0, 0, 0.12) !important;
   font-size: 14px !important;
   font-weight: 500 !important;
+  flex-shrink: 1 !important;
+  flex-basis: 521px !important;
 }
 #fern-search-button:focus,
 #fern-search-button:focus-within {
@@ -181,8 +183,8 @@ nav[aria-label="Up next"] a {
 
 /* Section Styles */
 .section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 64px;
+    padding-bottom: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -195,10 +197,11 @@ nav[aria-label="Up next"] a {
     text-align: left;
 }
 .section-content h2 {
-    font-size: 2.5rem;
+    font-size: 40px;
     font-weight: 700;
-    margin: 0 0 1rem 0;
-    line-height: 1.2;
+    margin: 0 0 16px 0;
+    line-height: 48px;
+    height: 48px;
 }
 .section-content h3 {
     margin: 0 0 1rem 0;
@@ -320,7 +323,7 @@ nav[aria-label="Up next"] a {
     z-index: 1;
     padding: 24px;
     color: #fff;
-    padding-bottom: 2rem;
+    padding-bottom: 56px;
     font-size: 15px
   }
 
@@ -347,9 +350,11 @@ nav[aria-label="Up next"] a {
   .sqsp-card-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 3.5rem;
+    gap: 56px;
     align-items: center;
     justify-content: center;
+    width: 800px;
+    margin: 0 auto;
   }
 
 /* Extra small mobile screens */
@@ -419,20 +424,17 @@ div#fern-docs-root #fern-search-button:focus-visible {
 }
 
 /* 2. Navbar: spacing and base button styles */
-div#fern-docs-root .fern-header-navbar-links,
-div#fern-docs-root .fern-button-group.fern-header-navbar-links {
-  gap: 12px !important;
-}
+/* Note: reference site has no explicit gap set, so we don't override it */
 
-/* Reduce spacing between search bar and navbar */
+/* Reduce spacing between search bar and navbar - balance between spacing and search bar width */
 .fern-header-navbar-links {
-  margin-left: -8px !important;
+  margin-left: -40px !important;
 }
 
 /* All navbar buttons get rectangular corners */
 .fern-header-navbar-links .fern-button {
   border-radius: 0 !important;
-  padding: 6px 14px !important;
+  padding: 6px 12px !important;
   font-size: 12px !important;
 }
 
